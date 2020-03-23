@@ -30,7 +30,7 @@ const request = require('axios')
 const { pickBy, identity } = require('lodash')
 
 module.exports = async (url, opts, span) => {
-  Logger.info(`Executing PUT: [${url}], HEADERS: [${JSON.stringify(opts.headers)}], BODY: [${JSON.stringify(opts.body)}]`)
+  Logger.info(`Executing PUT: [${url}], HEADERS: [${JSON.stringify(opts.headers)}], BODY: [${JSON.stringify(opts.data)}]`)
   let optionsWithCleanHeaders = Object.assign({}, opts, { headers: pickBy(opts.headers, identity) })
   if (span) {
     optionsWithCleanHeaders = span.injectContextToHttpRequest(optionsWithCleanHeaders)
